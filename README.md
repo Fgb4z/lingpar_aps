@@ -48,12 +48,6 @@ Linguagem de alto nível para controlar um sistema de irrigação por zonas em u
 [G17] number      ::= digit { digit } ;
 ```
 
-### Operadores e precedência
-
-1. `* /`
-2. `+ -`
-3. relacionais `== != < <= > >=`
-4. lógicos `and` > `or`
 
 ## Características
 
@@ -92,8 +86,5 @@ if (t >= 330 and t <= 420) {
 }
 ```
 
-## Alfabetos
 
-* `letter` = "a"…"z" | "A"…"Z"
-* `digit`  = "0"…"9"# IRRIGA — Especificação em EBNF (para README)
 
