@@ -6,9 +6,9 @@ int yylex(void);
 int yylineno;
 %}
 
-%define parse.error verbose
-%locations
-%start program
+/%define parse.error verbose/
+/%locations/
+/%start program/
 
 %union { int ival; char* sval; }
 
@@ -62,3 +62,11 @@ rel: expr EQ expr | expr NE expr | expr GT expr | expr LT expr | expr GE expr | 
 %%
 
 void yyerror(const char* s){ fprintf(stderr,"erro sintatico na linha %d: %s\n", yylineno, s); }
+
+int main(void) {
+    if (yyparse() == 0)
+        printf("Programa valido (analise lexica + sintatica OK).\n");
+    else
+        printf("Erro sintatico encontrado.\n");
+    return 0;
+}

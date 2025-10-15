@@ -1,0 +1,10 @@
+VALVULA_ON(10);
+LER(CHUVA) -> x;
+if (x > 50) {
+    BOMBA_OFF;
+} else {
+    BOMBA_ON;
+}
+while (x > 0) {
+    DELAY(5);
+}
