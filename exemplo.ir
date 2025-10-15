@@ -1,0 +1,17 @@
+ler(cisterna) -> c;
+ler(chuva) -> ch;
+ler(relogio) -> t;
+if (t >= 330 and t <= 420) {
+z = 0;
+while (z < 4) {
+ler(umidade, z) -> u;
+if (u < 40 and ch == 0 and c > 20) {
+bomba_on;
+valvula_on(z);
+delay(180000);
+valvula_off(z);
+bomba_off;
+}
+z = z + 1;
+}
+}
