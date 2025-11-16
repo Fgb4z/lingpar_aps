@@ -1,0 +1,21 @@
+# Claude Code configuration
+.claude/
+
+# Compiled binaries
+irriga_comp
+irriga_chk
+*.exe
+
+# Generated files
+lexer.c
+parser.c
+parser.h
+*.mwasm
+
+# Object files
+*.o
+*.obj
+
+# Build artifacts
+build/
+dist/

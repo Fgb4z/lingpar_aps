@@ -2,10 +2,10 @@ FL_LIB := $(shell test -f /opt/homebrew/opt/flex/lib/libfl.a && echo /opt/homebr
 
 .PHONY: all run clean
 
-all: irriga_chk
+all: irriga_comp
 
-irriga_chk: parser.c lexer.c
-	@gcc -O2 -std=c11 -Wall -Wextra -pedantic -o irriga_chk lexer.c parser.c $(FL_LIB)
+irriga_comp: parser.c lexer.c main.c
+	@gcc -O2 -std=c11 -Wall -Wextra -pedantic -o irriga_comp main.c lexer.c parser.c $(FL_LIB)
 	@echo "✅ Compilação concluída!"
 
 parser.c parser.h: parser.y
@@ -16,11 +16,12 @@ lexer.c: lexer.l parser.h
 
 run: all
 	@if [ -f exemplo.irriga ]; then \
-	  echo "▶  Executando irriga_chk..."; \
-	  ./irriga_chk < exemplo.irriga; \
+	  echo "▶  Compilando exemplo.irriga..."; \
+	  ./irriga_comp exemplo.irriga exemplo.mwasm; \
+	  echo "✅ Código gerado em exemplo.mwasm"; \
 	else \
 	  echo "⚠  Arquivo exemplo.irriga não encontrado. Crie um e rode 'make run' novamente."; \
 	fi
 
 clean:
-	rm -f irriga_chk lexer.c parser.c parser.h *.o
+	rm -f irriga_comp lexer.c parser.c parser.h *.o *.mwasm
